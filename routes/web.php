@@ -14,9 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-	$arr = [
-		'a'      => 'a',
-		'asasas' => 'asass',
-	];
-	return view('welcome');
+	return view('index');
+});
+Route::get('/movies/{movie}', function () {
+	return view('show');
 });
