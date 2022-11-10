@@ -1,9 +1,12 @@
 <x-layout>
-    <main class="flex justify-center items-center h-screen flex-col">
-        <div class="max-w-[700px] rounded-[10px] overflow-hidden">
-            <img class="w-full" src="https://img.lovepik.com/photo/50085/5373.jpg_wh860.jpg" alt="">
+    <main class="flex flex-col justify-center  min-h-screen">
+        <div class="flex flex-col items-center h-full max-w-6xl mx-auto mt-[228px] mb-[169px]">
+            <div class="max-w-[700px] rounded-[10px] overflow-hidden">
+                <img class="w-full" src="https://picsum.photos/700/400" alt="">
+            </div>
+            <x-title class="mt-[65px] mb-[114px]">{{ $movie->title }}</x-title>
+            <x-title class="underline">{{ $quote->quote }}</x-title>
         </div>
-        <x-title class="mt-[65px] mb-[114px]">favourite excerpt</x-title>
-        <x-title class="underline">film title</x-title>
+
     </main>
 </x-layout>
