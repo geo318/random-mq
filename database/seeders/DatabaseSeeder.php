@@ -18,8 +18,15 @@ class DatabaseSeeder extends Seeder
 	 */
 	public function run()
 	{
-		// User::factory(3)->create();
-		// Movie::factory(10)->create();
-		Quote::factory(55)->create();
+		User::factory(50)->create();
+		Movie::factory(50)->create();
+		$id = 1;
+		while ($id < 101)
+		{
+			Quote::factory(5)->create([
+				'movie_id' => $id,
+			]);
+			$id++;
+		}
 	}
 }

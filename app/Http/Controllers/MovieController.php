@@ -14,4 +14,11 @@ class MovieController extends Controller
 			'quote' => $randomMovie->quotes->random(),
 		]);
 	}
+
+	public function show(Movie $movie)
+	{
+		return view('show', [
+			'movie' => $movie,
+		]);
+	}
 }
