@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\User;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Validator;
 
 class CreateAdminCommand extends Command
 {
@@ -12,14 +13,14 @@ class CreateAdminCommand extends Command
 	 *
 	 * @var string
 	 */
-	protected $signature = 'admin:create {name} {email} {password}';
+	protected $signature = 'admin:create';
 
 	/**
 	 * The console command description.
 	 *
 	 * @var string
 	 */
-	protected $description = 'This command creates an Admin; command looks like this: php artisan admin:create {user} {email} {password}';
+	protected $description = 'This command creates an Admin; command looks like this: php artisan admin:create';
 
 	/**
 	 * Execute the console command.
@@ -28,14 +29,31 @@ class CreateAdminCommand extends Command
 	 */
 	public function handle()
 	{
-		$name = $this->argument(key:'name');
-		$email = $this->argument(key:'email');
-		$password = $this->argument(key:'password');
+		$validator = Validator::make([
+			'name'     => $name = $this->ask('name ?'),
+			'email'    => $email = $this->ask('email ?'),
+			'password' => $password = $this->secret('password ?'),
+		], [
+			'name'     => 'required|min:2',
+			'email'    => 'required|email',
+			'password' => 'required|min:7',
+		]);
+
+		if ($validator->fails())
+		{
+			$this->info('Admin not created:');
+			foreach ($validator->errors()->all() as $error)
+			{
+				$this->error($error);
+			}
+			return;
+		}
+
 		User::create([
 			'name'     => $name,
 			'email'    => $email,
 			'password' => bcrypt($password),
 		]);
-		$this->info(string:"Admin Successfully created: name:{$name} , email:{$email} , passwod:{$password}");
+		$this->info("Admin Successfully created: name:{$name}, email:{$email}, passwod:{$password}");
 	}
 }
