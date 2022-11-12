@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [MovieController::class, 'index']);
+Route::get('/', [MovieController::class, 'index'])->name('home');
 
-Route::get('/movies/{movie:slug}', fn () => view('show'));
+Route::view('/movies/{movie:slug}', view('show'))->name('quotes');
