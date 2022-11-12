@@ -1,15 +1,15 @@
 <x-layout>
-    <main class="flex justify-center items-center h-screen flex-col">
-        <div class="flex flex-col">
-            <x-title class="flex mb-[82px]">movie title</x-title>
-            
-            <div class="max-w-[748px] rounded-[10px] overflow-hidden bg-white">
-                <img class="w-full" max-h-[414px] src="https://img.lovepik.com/photo/50085/5373.jpg_wh860.jpg" alt="">
-                <div class="flex justify-center items-center bg-white">
-                    <h2 class="mt-[34px] mb-[45px] text-[36px] text-black">favourite excerpt</h2>
+    <div class="flex flex-col items-center min-h-screen">
+        <x-title class="flex my-[5rem]">{{ $movie->title }}</x-title>
+        
+        @foreach ($movie->quotes as $quote)          
+            <div class="max-w-[46.75rem] rounded-[0.625rem] mb-[4.188rem] overflow-hidden bg-white">
+                <img class="w-full" max-h-[414px] src="https://picsum.photos/750/420?random={{ $quote->id }}" alt="">
+                <div class="flex items-center bg-white">
+                    <h2 class="mt-[2.125rem] mb-[2.813rem] px-[1.125rem] text-[2.25rem] text-black">{{ $quote->quote }}</h2>
                 </div>
-            </div>
+            </div> 
+        @endforeach
 
-        </div>
-    </main>
+    </div>
 </x-layout>

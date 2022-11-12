@@ -10,6 +10,8 @@
   </head>
   <body class="font-['Sansation'] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#4E4E4E] via-[#3D3B3B] to-[#3D3B3B] h-full w-full min-h-screen text-white">
         <x-sidebar/>
-        {{ $slot }}
+        <main class="flex flex-col justify-center  min-h-screen">
+          {{ $slot }}
+        </main>
   </body>
 </html>

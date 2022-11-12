@@ -20,7 +20,7 @@ class MovieFactory extends Factory
 		return [
 			'title'    => fake()->sentence(4, true),
 			'user_id'  => User::factory(),
-			'slug'     => fake()->sentence(4, true),
+			'slug'     => fake()->slug(4, true),
 		];
 	}
 }
