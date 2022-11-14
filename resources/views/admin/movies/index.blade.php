@@ -8,7 +8,7 @@
           <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
 
             <a 
-              href="#" 
+              href="/admin/movies/create" 
               class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
             >
               Add movie
@@ -42,20 +42,24 @@
                         <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                           <a href="/admin/movies/{{ $movie->slug }}" class="text-indigo-600 hover:text-indigo-900">{{ $movie->title }}<span class="sr-only"></span></a>
                         </td>
-                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 text-center">5</td>
+                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 text-center">{{ count($movie->quotes) ?? 0 }}</td>
                         <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                           <a 
-                            href="#" 
+                            href="/admin/movies/{{ $movie->id }}/quote/create" 
                             class="inline-flex items-center justify-center rounded-md border ring-1 px-4 py-2 text-sm font-medium text-black shadow-sm focus:outline-none focus:ring-2 hover:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
                           >
                             Add new quote
                           </a>
                         </td>
                         <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                          <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                          <a href="/admin/movies/{{ $movie->id }}/edit" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                         </td>
                         <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                          <a href="#" class="text-indigo-600 hover:text-indigo-900">Delete<span class="sr-only"></span></a>
+                          <form method="POST" action="/admin/movies/{{ $movie->id }}">
+                            @csrf
+                            @method('delete')
+                            <button class="text-indigo-600 hover:text-indigo-900">Delete</button>
+                          </form>
                         </td>
                       </tr>
       
