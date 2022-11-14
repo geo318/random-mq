@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\AdminMovieController;
+use App\Http\Controllers\AdminQuoteController;
 use App\Http\Controllers\MovieController;
+use Brick\Math\RoundingMode;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,3 +20,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [MovieController::class, 'index'])->name('home');
 
 Route::get('/movie/{movie:slug}', [MovieController::class, 'show'])->name('quotes');
+
+Route::get('/admin/movies', [AdminMovieController::class, 'index'])->name('movies');
+
+Route::get('/admin/movies/{movie:slug}', [AdminMovieController::class, 'show'])->name('quotes');
+
+Route::get('/admin/movies/{movie}/quote/create', [AdminQuoteController::class, 'create']);
+Route::get('/admin/movies/{movie}/{quote}/edit', [AdminQuoteController::class, 'edit']);
