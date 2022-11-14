@@ -20,7 +20,7 @@ class CreateAdminCommand extends Command
 	 *
 	 * @var string
 	 */
-	protected $description = 'This command creates an Admin; command looks like this: php artisan admin:create';
+	protected $description = 'This command creates an Admin';
 
 	/**
 	 * Execute the console command.
