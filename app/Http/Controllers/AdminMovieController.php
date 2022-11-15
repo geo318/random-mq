@@ -22,11 +22,6 @@ class AdminMovieController extends Controller
 		]);
 	}
 
-	public function create()
-	{
-		return view('admin.movies.create');
-	}
-
 	public function store(StoreMovieRequest $request)
 	{
 		$attributes = $request->validated();
@@ -34,7 +29,7 @@ class AdminMovieController extends Controller
 		$attributes['slug'] = preg_replace('~[^\pL\d]+~u', '-', $attributes['title']);
 
 		Movie::create($attributes);
-		return redirect('/admin/movies');
+		return redirect(route('admin.movies'));
 	}
 
 	public function edit(Movie $movie)
