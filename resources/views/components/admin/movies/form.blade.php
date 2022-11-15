@@ -1,6 +1,6 @@
 @props(['title','button','subtitle','movie'])
 <div class="max-w-[80rem] my-10 p-5 rounded-md bg-gray-100 mx-auto">
-    <form class="divide-gray-200" method="POST" action="/admin/movies">
+    <form class="divide-gray-200" method="POST" action="{{ route('admin.movies') }}">
         @csrf
         <div class="divide-gray-200">
             <div>

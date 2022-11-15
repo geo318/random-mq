@@ -23,15 +23,15 @@ Route::view('/login', 'admin.login')->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'login'])->middleware('guest');
 Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
 
-Route::get('/admin/movies', [AdminMovieController::class, 'index'])->name('movies');
-Route::get('/admin/movies/create', [AdminMovieController::class, 'create']);
+Route::get('/admin/movies', [AdminMovieController::class, 'index'])->name('admin.movies');
+Route::get('/admin/movies/create', [AdminMovieController::class, 'create'])->name('admin.movies.create');
 Route::post('/admin/movies', [AdminMovieController::class, 'store']);
-Route::delete('/admin/movies/{movie}', [AdminMovieController::class, 'destroy']);
-Route::get('/admin/movies/{movie}/edit', [AdminMovieController::class, 'edit']);
-Route::patch('/admin/movies/{movie}', [AdminMovieController::class, 'update']);
+Route::delete('/admin/movies/{movie}', [AdminMovieController::class, 'destroy'])->name('admin.movies.movie');
+Route::get('/admin/movies/{movie}/edit', [AdminMovieController::class, 'edit'])->name('admin.movies.edit');
+Route::patch('/admin/movies/{movie}', [AdminMovieController::class, 'update'])->name('admin.movies.movie');
 
 
-Route::get('/admin/movies/{movie:slug}', [AdminMovieController::class, 'show'])->name('quotes');
+Route::get('/admin/movies/{movie:slug}', [AdminMovieController::class, 'show'])->name('admin.quotes');
 
-Route::get('/admin/movies/{movie}/quote/create', [AdminQuoteController::class, 'create']);
-Route::get('/admin/movies/{movie}/{quote}/edit', [AdminQuoteController::class, 'edit']);
+Route::get('/admin/movies/{movie}/quote/create', [AdminQuoteController::class, 'create'])->name('admin.quote.create');
+Route::get('/admin/movies/{movie}/{quote}/edit', [AdminQuoteController::class, 'edit'])->name('admin.quote.edit');
