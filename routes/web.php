@@ -19,6 +19,6 @@ Route::get('/', [MovieController::class, 'index'])->name('home');
 
 Route::get('/movie/{movie:slug}', [MovieController::class, 'show'])->name('quotes');
 
-Route::get('/login', [LoginController::class, 'create'])->name('login')->middleware('guest');
-Route::post('/logout', [LoginController::class, 'destroy']);
-Route::post('/login', [LoginController::class, 'store'])->name('login')->middleware('guest');
+Route::view('/login', 'admin.login')->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'login'])->middleware('guest');
+Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');

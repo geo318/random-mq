@@ -12,12 +12,12 @@
         
         <div class="flex justify-end p-5 text-sm">
           @auth
-            <form action="/logout" method="POST">
+            <form action="{{ route('logout') }}" method="POST">
               @csrf
               <button type="submit" class="px-10 py-2 rounded-md border border-gray-300">logout</button>
             </form>
           @else
-            <a class="px-10 py-2 rounded-md border border-gray-300" href="/login">login</a>
+            <a class="px-10 py-2 rounded-md border border-gray-300" href="{{ route('login') }}">login</a>
           @endauth
         </div>
         

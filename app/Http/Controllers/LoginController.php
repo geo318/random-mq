@@ -6,12 +6,7 @@ use App\Http\Requests\StoreUserRequest;
 
 class LoginController extends Controller
 {
-	public function create()
-	{
-		return view('admin.login');
-	}
-
-	public function store(StoreUserRequest $request)
+	public function login(StoreUserRequest $request)
 	{
 		if (auth()->attempt($request->validated()))
 		{
