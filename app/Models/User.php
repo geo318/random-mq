@@ -12,7 +12,12 @@ class User extends Authenticatable
 {
 	use HasApiTokens;
 
-	use HasFactory;
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $guarded = [];
 
 	use Notifiable;
 
@@ -21,11 +26,6 @@ class User extends Authenticatable
 	 *
 	 * @var array<int, string>
 	 */
-	protected $fillable = [
-		'name',
-		'email',
-		'password',
-	];
 
 	/**
 	 * The attributes that should be hidden for serialization.
