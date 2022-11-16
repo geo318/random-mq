@@ -18,7 +18,6 @@ class DatabaseSeeder extends Seeder
 	 */
 	public function run()
 	{
-		User::factory(50)->create();
 		Movie::factory(50)->create();
 		$id = 1;
 		while ($id < 101)
