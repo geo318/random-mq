@@ -21,6 +21,7 @@ class QuoteFactory extends Factory
 		return [
 			'quote'    => fake()->sentence(8, true),
 			'user_id'  => User::factory(),
+			'thumbnail'  => null,
 			'movie_id' => Movie::factory(),
 		];
 	}

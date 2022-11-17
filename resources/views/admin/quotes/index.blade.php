@@ -1,6 +1,6 @@
 <x-layout>
     <div class="px-4 sm:px-6 lg:px-8">
-        <div class="sm:flex sm:items-center max-w-[50rem] mx-auto">
+        <div class="sm:flex sm:items-center max-w-[60rem] mx-auto">
             <div class="sm:flex-auto">
             <h1 class="text-xl font-semibold text-white">Quotes</h1>
             <p class="mt-2 text-sm text-gray-100">{{ $movie->title }}</p>
@@ -15,7 +15,7 @@
             </a>
             </div>
         </div>
-        <div class="mt-8 flex flex-col max-w-[50rem] mx-auto">
+        <div class="mt-8 flex flex-col max-w-[60rem] mx-auto">
             <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
                     <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
@@ -33,20 +33,28 @@
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-200 bg-white">
+
                                 @foreach ($movie->quotes as $quote)
-                                
+
                                     <tr>
-                                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{ $quote->quote }}</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 text-center">5</td>
-                                    <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                        <a href="{{ route('admin.quote.edit', [$movie->id, $quote->id]) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                    </td>
-                                    <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                        <a href="#" class="text-indigo-600 hover:text-indigo-900">Delete<span class="sr-only"></span></a>
-                                    </td>
+                                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{ $quote->quote }}</td>
+                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 text-center">
+                                            <img id='image-exists' class="object-cover w-16 h-16 rounded-md" src="{{ asset('storage/' . $quote->thumbnail) }}"/>
+                                        </td>
+                                        <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                                            <a href="{{ route('admin.quote.edit', [$movie->id, $quote->id]) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                        </td>
+                                        <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                                            <form action="{{ route('admin.quote',[$movie->id,$quote->id]) }}" method="POST">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="text-indigo-600 hover:text-indigo-900">Delete</button>
+                                            </form>
+                                        </td>
                                     </tr>
 
                                 @endforeach
+
                             </tbody>
                         </table>
                     </div>

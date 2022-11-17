@@ -58,7 +58,7 @@
                       <form method="POST" action="{{ route('admin.movies.movie', $movie->id) }}">
                         @csrf
                         @method('delete')
-                        <button class="text-indigo-600 hover:text-indigo-900">Delete</button>
+                        <button type="submit" class="text-indigo-600 hover:text-indigo-900">Delete</button>
                       </form>
                     </td>
                   </tr>

@@ -43,7 +43,7 @@ class AdminMovieController extends Controller
 	{
 		$attributes = $request->validated();
 		$movie->update($attributes);
-		return back()->with('success', 'movie updated');
+		return redirect(route('admin.movies'))->with('success', 'movie updated');
 	}
 
 	public function destroy(Movie $movie)
