@@ -27,7 +27,7 @@
                         </div>
                 
                         <div class="sm:col-span-6">
-                            <label for="cover-photo" class="block text-sm font-medium text-gray-700">Quote photo</label>
+                            <label for="cover-photo" class="block text-sm font-medium text-gray-700">{{ __('Quote photo') }}</label>
                             <x-image-uploader thumbnail="{{ $quote ?? '' }}"/>
                         </div>
                     </div>

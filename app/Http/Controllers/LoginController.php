@@ -10,7 +10,7 @@ class LoginController extends Controller
 	{
 		if (auth()->attempt($request->validated()))
 		{
-			return redirect(route('admin.movies', app()->getLocale()))->with('success', 'Logged in as Admin.');
+			return redirect(route('admin.movies', app()->getLocale()))->with('success', __('Logged in as Admin'));
 		}
 		return back()->with('fail', 'try again');
 	}
@@ -18,6 +18,6 @@ class LoginController extends Controller
 	public function destroy()
 	{
 		auth()->logout();
-		return redirect('/')->with('success', 'See ya!');
+		return redirect("/" . app()->getLocale())->with('success', __('Goodbye!'));
 	}
 }

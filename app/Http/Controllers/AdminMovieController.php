@@ -42,13 +42,14 @@ class AdminMovieController extends Controller
 	public function update($arg, StoreMovieRequest $request, Movie $movie)
 	{
 		$attributes = $request->validated();
+		$attributes['slug'] = preg_replace('~[^\pL\d]+~u', '-', $attributes['title']);
 		$movie->update($attributes);
-		return redirect(route('admin.movies', app()->getLocale()))->with('success', 'movie updated');
+		return redirect(route('admin.movies', app()->getLocale()))->with('success', __('Movie title updated'));
 	}
 
 	public function destroy($arg, Movie $movie)
 	{
 		$movie->delete();
-		return back()->with('success', 'movie deleted');
+		return back()->with('success', __('Movie deleted'));
 	}
 }

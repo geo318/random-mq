@@ -2,7 +2,7 @@
     <div class="px-4 sm:px-6 lg:px-8">
         <div class="sm:flex sm:items-center max-w-[60rem] mx-auto">
             <div class="sm:flex-auto">
-            <h1 class="text-xl font-semibold text-white">Quotes</h1>
+            <h1 class="text-xl font-semibold text-white">{{ __('Quotes') }}</h1>
             <p class="mt-2 text-sm text-gray-100">{{ $movie->title }}</p>
             </div>
             <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
@@ -11,7 +11,7 @@
                 href="{{ route('admin.quote.create', [app()->getLocale(),$movie->id])  }}"
                 class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
             >
-                Add new Quote
+                {{ __('Add new quote') }}
             </a>
             </div>
         </div>
@@ -22,13 +22,13 @@
                         <table class="min-w-full divide-y divide-gray-300">
                             <thead class="bg-gray-50">
                                 <tr>
-                                    <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Title</th>
-                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Image</th>
+                                    <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">{{ __('Title') }}</th>
+                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">{{ __('Image') }}</th>
                                     <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
-                                    <span class="sr-only">Edit</span>
+                                    <span class="sr-only">{{ __('Edit') }}</span>
                                     </th>
                                     <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
-                                    <span class="sr-only">delete</span>
+                                    <span class="sr-only">{{ __('delete') }}</span>
                                     </th>
                                 </tr>
                             </thead>
@@ -42,13 +42,13 @@
                                             <img id='image-exists' class="object-cover w-16 h-16 rounded-md" src="{{ asset('storage/' . $quote->thumbnail) }}"/>
                                         </td>
                                         <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                            <a href="{{ route('admin.quote.edit', [app()->getLocale(), $movie->id, $quote->id]) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                            <a href="{{ route('admin.quote.edit', [app()->getLocale(), $movie->id, $quote->id]) }}" class="text-indigo-600 hover:text-indigo-900">{{ __('Edit') }}</a>
                                         </td>
                                         <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                                             <form action="{{ route('admin.quote',[app()->getLocale(), $movie->id, $quote->id]) }}" method="POST">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="submit" class="text-indigo-600 hover:text-indigo-900">Delete</button>
+                                                <button type="submit" class="text-indigo-600 hover:text-indigo-900">{{ __('Delete') }}</button>
                                             </form>
                                         </td>
                                     </tr>

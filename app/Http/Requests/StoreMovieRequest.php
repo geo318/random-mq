@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreMovieRequest extends FormRequest
 {
@@ -14,7 +15,9 @@ class StoreMovieRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:1|max:255|unique:movies,title',
+            'title' => request()->isMethod('post') 
+                ? 'required|min:1|max:255|unique:movies,title'
+                : 'required|min:1|max:255|unique:movies,title,' . last($this->segments()),
         ];
     }
 }

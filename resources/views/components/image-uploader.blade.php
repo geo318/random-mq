@@ -6,7 +6,7 @@
                 <img id='image-exists' class="object-cover w-full h-full" src="{{ asset('storage/' . $thumbnail) }}"/>
                 <label for="file-upload" class="absolute inset-0 cursor-pointer rounded-md bg-transparent text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500">
                     <input id="file-upload" name="thumbnail" type="file" class="sr-only">
-                    <span class="bg-indigo-600 text-white text-sm rounded-xl px-4 py-1 m-1 top-10 table">upload again</span>
+                    <span class="bg-indigo-600 text-white text-sm rounded-xl px-4 py-1 m-1 top-10 table">{{ __('upload again') }}</span>
                 </label>
             @endif
         </div>
@@ -17,9 +17,9 @@
                     <label for="file-upload" class="absolute inset-0 cursor-pointer rounded-md bg-transparent text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500">
                         <input id="file-upload" name="thumbnail" type="file" class="sr-only">
                     </label>
-                    <p class="pl-1"><b>Upload a file</b> or drag and drop</p>
+                    <p class="pl-1"><b>{{ __('Upload a file') }}</b> {{ __('or drag and drop') }}</p>
                 </div>
-                <p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+                <p class="text-xs text-gray-500">PNG, JPG, GIF</p>
                 @error('thumbnail')
                     <p class="mt-2 text-sm text-red-500">{{ $message }}</p>
                 @enderror

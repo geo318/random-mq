@@ -9,24 +9,27 @@
     @vite('resources/css/app.css')
   </head>
   <body class="font-['Sansation'] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#4E4E4E] via-[#3D3B3B] to-[#3D3B3B] h-full w-full min-h-screen text-white">
-        <div class="flex">
+        <header class="flex fixed inset-0 h-20 z-50">
           <div class="grow p-5">
           @unless (request()->routeIs('home'))
-            <a href="{{ url()->previous() }}" class="text-white"><span class="text-xl">&#8249;</span> back</a>
+            <a href="javascript:history.back()" class="text-white"><span class="text-xl">&#8249; </span>{{ __('back') }}</a>
           @endif
           </div>
+          @php
+            $class = 'px-10 py-2 rounded-md border bg-indigo-600 border-transparent text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500'
+          @endphp
 
           <div class="flex justify-end p-5 text-sm">
             @auth
               <form action="{{ route('logout', app()->getLocale()) }}" method="POST">
                 @csrf
-                <button type="submit" class="px-10 py-2 rounded-md border border-gray-300">logout</button>
+                <button type="submit" class="{{ $class }}">{{ __('logout') }}</button>
               </form>
             @else
-              <a class="px-10 py-2 rounded-md border border-gray-300" href="{{ route('login',app()->getLocale()) }}">login</a>
+              <a class="{{ $class }}" href="{{ route('login',app()->getLocale()) }}">{{ __('login') }}</a>
             @endauth
           </div>
-        </div>
+        </header>
         
         <x-sidebar/>
         <main class="flex flex-col justify-center  min-h-screen">

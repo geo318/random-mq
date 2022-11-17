@@ -5,9 +5,6 @@ use App\Http\Controllers\MovieController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminMovieController;
 use App\Http\Controllers\AdminQuoteController;
-use App\Http\Controllers\LanguageController;
-use Illuminate\Contracts\Session\Session;
-use Illuminate\Support\Facades\App;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +16,6 @@ use Illuminate\Support\Facades\App;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::redirect('/', Session()->get('applocale') ?? config('app.locale'));
 
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLanguage']);
@@ -51,3 +47,5 @@ Route::group([
 		Route::delete('/admin/movies/{movie}/{quote}', [AdminQuoteController::class, 'destroy']);
 	});
 });
+
+Route::any('{url}', fn() => back())->where('url', '.*');
