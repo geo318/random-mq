@@ -18,12 +18,12 @@
 
           <div class="flex justify-end p-5 text-sm">
             @auth
-              <form action="{{ route('logout') }}" method="POST">
+              <form action="{{ route('logout', app()->getLocale()) }}" method="POST">
                 @csrf
                 <button type="submit" class="px-10 py-2 rounded-md border border-gray-300">logout</button>
               </form>
             @else
-              <a class="px-10 py-2 rounded-md border border-gray-300" href="{{ route('login') }}">login</a>
+              <a class="px-10 py-2 rounded-md border border-gray-300" href="{{ route('login',app()->getLocale()) }}">login</a>
             @endauth
           </div>
         </div>

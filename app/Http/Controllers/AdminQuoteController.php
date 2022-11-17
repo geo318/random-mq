@@ -15,16 +15,16 @@ class AdminQuoteController extends Controller
 		$attributes['movie_id'] = request('movie');
 		$attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
 		Quote::create($attributes);
-		return redirect(route('admin.quotes', Movie::find(request('movie'))->slug))->with('success', 'Congrats! New quote added!');
+		return redirect(route('admin.quotes', [app()->getLocale(), Movie::find(request('movie'))->slug]))->with('success', 'Congrats! New quote added!');
 	}
 
-	public function destroy($movie, Quote $quote)
+	public function destroy($arg, $movie, Quote $quote)
 	{
 		$quote->delete();
 		return back()->with('success', 'quote deleted');
 	}
 
-	public function update(StoreQuoteRequest $request, $movie, Quote $quote)
+	public function update($arg, StoreQuoteRequest $request, $movie, Quote $quote)
 	{
 		$attributes = $request->validated();
 		
@@ -33,6 +33,6 @@ class AdminQuoteController extends Controller
 			$attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
 		}
 		$quote->update($attributes);
-		return redirect(route('admin.quotes', Movie::find(request('movie'))->slug))->with('success', 'Congrats! Quote updated!');
+		return redirect(route('admin.quotes', [app()->getLocale(), Movie::find(request('movie'))->slug]))->with('success', 'Congrats! Quote updated!');
 	}
 }

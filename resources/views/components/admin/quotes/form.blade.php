@@ -1,5 +1,5 @@
 @props(['title','button','subtitle','patch','action','quote'])
-<x-layout>
+<x-layout>  
     <div class="max-w-[80rem] my-10 p-5 rounded-md bg-gray-100 mx-auto min-w-[30rem]">
         <form enctype="multipart/form-data" method="POST" action="{{ $action }}" class="space-y-8 divide-y divide-gray-200">
             <div>
@@ -28,7 +28,7 @@
                 
                         <div class="sm:col-span-6">
                             <label for="cover-photo" class="block text-sm font-medium text-gray-700">Quote photo</label>
-                            <x-image-uploader thumbnail="{{ $quote }}"/>
+                            <x-image-uploader thumbnail="{{ $quote ?? '' }}"/>
                         </div>
                     </div>
                 </div>
