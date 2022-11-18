@@ -10,6 +10,7 @@
     "A list of all the movies in your account" : "შენი ფილმების ლისტი",
     "Add movie" : "დაამატე ფილმი",
     "Quotes" : "ფრაზები",
+    "Quote" : "ფრაზა",
     "Title" : "სათაური",
     "Add new quote": "დაამატე ფრაზა",
     "Edit" : "შესწორება",
@@ -34,8 +35,8 @@
     "Quote deleted":"",
     "Quote updated":"ციტატა განახლდა",
     "Logged in as Admin":"გამარჯობა, ადმინ!",
-    "Goodbye!":"ნახვამდის"
-    
-
+    "Goodbye!":"ნახვამდის",
+    "No movies yet" : "ფილმი არაა დამატებული",
+    "home" : "მთავარი"
 
 }

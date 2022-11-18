@@ -13,18 +13,20 @@
                     </div>
             
                     <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-            
-                        <div class="sm:col-span-6">
-                            <label for="quote" class="block text-sm font-medium text-gray-700"></label>
-                            <div class="mt-1">
-                                <textarea id="quote" name="quote" rows="3" class="text-black block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                >{{ old('quote', \App\Models\Quote::find(request('quote'))->quote ?? '') }}</textarea>
+
+                        @foreach ( array_keys(config('languages')) as $locale )
+                            <div class="sm:col-span-6">
+                                <label for="quote.{{ $locale }}" class="block text-sm font-medium text-gray-700">{{ __('Quote') }} ({{ $locale }})</label>
+                                <div class="mt-1">
+                                    <textarea id="quote.{{ $locale }}" name="quote[{{ $locale }}]" rows="3" class="text-black block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                    >{{ old('quote.' . $locale, \App\Models\Quote::find(request('quote'))?->getTranslations('quote')[$locale] ?? '') }}</textarea>
+                                </div>
+                                @error('quote.' . $locale)
+                                    <p class="mt-2 text-sm text-red-500">{{ $message }}</p>
+                                @enderror
+                                
                             </div>
-                            @error('quote')
-                                <p class="mt-2 text-sm text-red-500">{{ $message }}</p>
-                            @enderror
-                            
-                        </div>
+                        @endforeach                     
                 
                         <div class="sm:col-span-6">
                             <label for="cover-photo" class="block text-sm font-medium text-gray-700">{{ __('Quote photo') }}</label>

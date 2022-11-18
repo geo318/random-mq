@@ -6,7 +6,6 @@ namespace Database\Seeders;
 
 use App\Models\Movie;
 use App\Models\Quote;
-use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,14 +17,14 @@ class DatabaseSeeder extends Seeder
 	 */
 	public function run()
 	{
-		Movie::factory(50)->create();
-		$id = 1;
-		while ($id < 101)
+		Quote::factory(50)->create();
+		$movies = Movie::factory(50)->create();
+
+		foreach ($movies as $movie)
 		{
-			Quote::factory(5)->create([
-				'movie_id' => $id,
+			Quote::factory(rand(1, 10))->create([
+				'movie_id' => $movie->id,
 			]);
-			$id++;
 		}
 	}
 }
