@@ -15,7 +15,7 @@ class MovieController extends Controller
 		]);
 	}
 
-	public function show(Movie $movie)
+	public function show($arg, Movie $movie)
 	{
 		return view('show', [
 			'movie' => $movie,

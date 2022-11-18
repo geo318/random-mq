@@ -16,9 +16,8 @@
         
                 <div class="sm:col-span-6">
                     <div class="mt-1">
-                        <textarea id="movie" name="title" rows="2" class="text-black resize-none p-3 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="movie title here">
-                            {{ old('title', $movie->title ?? '') }}
-                        </textarea>
+                        <textarea id="movie" name="title" rows="2" class="text-black resize-none p-3 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="movie title here"
+                        >{{ old('title', $movie->title ?? '') }}</textarea>
                     </div>                    
                     @error('title')
                         <p class="mt-2 text-sm text-red-500">{{ $message }}</p>
