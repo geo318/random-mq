@@ -146,5 +146,8 @@ With this command, you create admin, to login to your account and add as many mo
 
 #
 ### Database Design Diagram
+[drawSQL link](https://drawsql.app/teams/geo-3/diagrams/movie-quotes)
 
-<img width="800" style="position: relative; margin-top: 15px" src="readme/assets/drawsql.png"/>
+<a href="https://drawsql.app/teams/geo-3/diagrams/movie-quotes" target="blank_">
+  <img width="800" style="position: relative; margin-top: 15px" src="readme/assets/drawsql.png"/>
+<a/>
