@@ -10,11 +10,13 @@ class AdminQuoteController extends Controller
 {
 	public function store(StoreQuoteRequest $request)
 	{
-		$attributes = $request->validated();
-		$attributes['user_id'] = auth()->id();
-		$attributes['movie_id'] = request('movie');
-		$attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
-		Quote::create($attributes);
+		$quote = new Quote();
+        $quote->setTranslations('quote', $request->input('quote'));
+
+		$quote['user_id'] = auth()->id();
+		$quote['movie_id'] = request('movie');
+		$quote['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
+		$quote->save();
 		return redirect(route('admin.quotes', [app()->getLocale(), Movie::find(request('movie'))->slug]))->with('success', __('New quote added!'));
 	}
 
@@ -26,13 +28,12 @@ class AdminQuoteController extends Controller
 
 	public function update($arg, StoreQuoteRequest $request, $movie, Quote $quote)
 	{
-		$attributes = $request->validated();
-		
-		if (isset($attributes['thumbnail']))
+		$quote->setTranslations('quote', $request->input('quote'));
+		if (isset($request['thumbnail']))
 		{
-			$attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
+			$quote['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
 		}
-		$quote->update($attributes);
+		$quote->update();
 		return redirect(route('admin.quotes', [app()->getLocale(), Movie::find(request('movie'))->slug]))->with('success', __('Quote updated'));
 	}
 }

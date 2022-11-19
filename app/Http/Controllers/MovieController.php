@@ -8,10 +8,10 @@ class MovieController extends Controller
 {
 	public function index()
 	{
-		$randomMovie = Movie::all()->random();
+		$randomMovie = count($movies = Movie::all()) > 0 ? $movies->random() : null;
 		return view('index', [
-			'movie' => $randomMovie,
-			'quote' => $randomMovie->quotes->random(),
+			'movie' => $randomMovie ?? null,
+			'quote' => $randomMovie != null ? $randomMovie->quotes->random() : null,
 		]);
 	}
 

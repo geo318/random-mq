@@ -12,7 +12,11 @@
         <header class="flex fixed inset-0 h-20 z-50">
           <div class="grow p-5">
           @unless (request()->routeIs('home'))
-            <a href="javascript:history.back()" class="text-white"><span class="text-xl">&#8249; </span>{{ __('back') }}</a>
+            <div class="flex">
+              <a href="/" class="text-white mr-5"><span class="text-xl">&#8249; </span>{{ __('home') }}</a>
+              <a href="javascript:history.back()" class="text-white"><span class="text-xl"> </span>{{ __('back') }}</a>
+            </div>
+            
           @endif
           </div>
           @php

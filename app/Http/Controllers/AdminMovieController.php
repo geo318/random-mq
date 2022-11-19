@@ -24,11 +24,11 @@ class AdminMovieController extends Controller
 
 	public function store(StoreMovieRequest $request)
 	{
-		$attributes = $request->validated();
-		$attributes['user_id'] = auth()->id();
-		$attributes['slug'] = preg_replace('~[^\pL\d]+~u', '-', $attributes['title']);
-
-		Movie::create($attributes);
+		$movie = new Movie();
+        $movie->setTranslations('title', $request->input('title'));
+		$movie['user_id'] = auth()->id();
+		$movie['slug'] = preg_replace('~[^\pL\d]+~u', '-', $movie['title']);
+		$movie->save();
 		return redirect(route('admin.movies', app()->getLocale()));
 	}
 
@@ -41,9 +41,10 @@ class AdminMovieController extends Controller
 
 	public function update($arg, StoreMovieRequest $request, Movie $movie)
 	{
-		$attributes = $request->validated();
-		$attributes['slug'] = preg_replace('~[^\pL\d]+~u', '-', $attributes['title']);
-		$movie->update($attributes);
+		$movie->setTranslations('title', $request->input('title'));
+		$movie['user_id'] = auth()->id();
+		$movie['slug'] = preg_replace('~[^\pL\d]+~u', '-', $movie['title']);
+		$movie->update();
 		return redirect(route('admin.movies', app()->getLocale()))->with('success', __('Movie title updated'));
 	}
 
