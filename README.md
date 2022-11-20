@@ -112,22 +112,14 @@ With this command, you create admin, to login to your account and add as many mo
 ```bash
 ├─── app
 │   ├─── Console
-│   ├─── Enums
+│   │   ├─── commands
 │   ├─── Exceptions
-│   ├─── Facades
 │   ├─── Http
-│   ├─── Library
-│   │   ├─── Adapters
-│   │   ├─── DataStructures
-│   │   ├─── Entities
-│   │   ├─── Interactors
-│   │   ├─── Presenters
-│   │   │___ Testing
-│   ├─── Nova
+│   │   ├─── Controllers
+│   │   ├─── Middleware
+│   │   ├─── Requests
+│   ├─── Models
 │   ├─── Providers
-│   ├─── Traits
-│   │___ Rules
-│   │... Models
 ├─── bootstrap
 ├─── config
 ├─── database
