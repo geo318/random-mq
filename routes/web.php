@@ -5,6 +5,7 @@ use App\Http\Controllers\MovieController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminMovieController;
 use App\Http\Controllers\AdminQuoteController;
+use App\Http\Controllers\SessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +17,7 @@ use App\Http\Controllers\AdminQuoteController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::redirect('/', Session()->get('applocale') ?? config('app.locale'));
+Route::get('/', [SessionController::class,'index']);
 
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLanguage']);
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUserRequest;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -10,7 +11,7 @@ class LoginController extends Controller
 	{
 		if (auth()->attempt($request->validated()))
 		{
-			return redirect(route('admin.movies', app()->getLocale()))->with('success', __('Logged in as Admin'));
+			return redirect(route('admin.movies', Session::get('applocale') ?? app()->getLocale()))->with('success', __('Logged in as Admin'));
 		}
 		return back()->with('fail', 'try again');
 	}
