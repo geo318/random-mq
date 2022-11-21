@@ -11,8 +11,6 @@
 
   <body class="font-['Sansation'] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#4E4E4E] via-[#3D3B3B] to-[#3D3B3B] h-full w-full min-h-screen text-white">
         <header class="flex fixed inset-0 h-20 z-50">
-          {{ Session::get('applocale') }}
-          {{ app()->getLocale() }}
           <div class="grow p-5">
           @unless (request()->routeIs('home'))
             <div class="flex">
