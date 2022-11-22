@@ -9,7 +9,7 @@
                 <x-title class="underline">{{ $movie->title }}</x-title>
             </a>
         @else
-            <p>{{ __('No movies yet') }}</p>
+            <p>{{ __('main.no_movies_yet') }}</p>
         @endif
 
     </div>

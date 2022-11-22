@@ -16,7 +16,7 @@
 
                         @foreach ( array_keys(config('languages')) as $locale )
                             <div class="sm:col-span-6">
-                                <label for="quote.{{ $locale }}" class="block text-sm font-medium text-gray-700">{{ __('Quote') }} ({{ $locale }})</label>
+                                <label for="quote.{{ $locale }}" class="block text-sm font-medium text-gray-700">{{ __('main.quote') }} ({{ $locale }})</label>
                                 <div class="mt-1">
                                     <textarea id="quote.{{ $locale }}" name="quote[{{ $locale }}]" rows="3" class="text-black block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                     >{{ old('quote.' . $locale, \App\Models\Quote::find(request('quote'))?->getTranslations('quote')[$locale] ?? '') }}</textarea>
@@ -29,7 +29,7 @@
                         @endforeach                     
                 
                         <div class="sm:col-span-6">
-                            <label for="cover-photo" class="block text-sm font-medium text-gray-700">{{ __('Quote photo') }}</label>
+                            <label for="cover-photo" class="block text-sm font-medium text-gray-700">{{ __('main.quote_photo') }}</label>
                             <x-image-uploader thumbnail="{{ $quote ?? '' }}"/>
                         </div>
                     </div>

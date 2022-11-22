@@ -14,7 +14,6 @@ class Quote extends Model
 	public $translatable = ['quote'];
 
     protected $guarded = [];
-    use HasFactory;
     
     public function movie() {
         return $this->belongsTo(Movie::class);

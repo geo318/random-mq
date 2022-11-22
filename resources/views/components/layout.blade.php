@@ -14,8 +14,8 @@
           <div class="grow p-5">
           @unless (request()->routeIs('home'))
             <div class="flex">
-              <a href="/{{ Session::get('applocale') ?? app()->getLocale() }}" class="text-white mr-5"><span class="text-xl">&#8249; </span>{{ __('home') }}</a>
-              <a href="javascript:history.back()" class="text-white"><span class="text-xl"> </span>{{ __('back') }}</a>
+              <a href="/{{ Session::get('applocale') ?? app()->getLocale() }}" class="text-white mr-5"><span class="text-xl">&#8249; </span>{{ __('main.home') }}</a>
+              <a href="javascript:history.back()" class="text-white"><span class="text-xl"> </span>{{ __('main.back') }}</a>
             </div>
             
           @endif
@@ -28,10 +28,10 @@
             @auth
               <form action="{{ route('logout', app()->getLocale()) }}" method="POST">
                 @csrf
-                <button type="submit" class="{{ $class }}">{{ __('logout') }}</button>
+                <button type="submit" class="{{ $class }}">{{ __('main.logout') }}</button>
               </form>
             @else
-              <a class="{{ $class }}" href="{{ route('login',app()->getLocale()) }}">{{ __('login') }}</a>
+              <a class="{{ $class }}" href="{{ route('login',app()->getLocale()) }}">{{ __('main.login') }}</a>
             @endauth
           </div>
         </header>
