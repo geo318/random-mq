@@ -14,7 +14,7 @@
           <div class="grow p-5">
           @unless (request()->routeIs('home'))
             <div class="flex">
-              <a href="/{{ Session::get('applocale') ?? app()->getLocale() }}" class="text-white mr-5"><span class="text-xl">&#8249; </span>{{ __('main.home') }}</a>
+              <a href="{{ route('home' , Session::get('applocale') ?? app()->getLocale()) }}" class="text-white mr-5"><span class="text-xl">&#8249; </span>{{ __('main.home') }}</a>
               <a href="javascript:history.back()" class="text-white"><span class="text-xl"> </span>{{ __('main.back') }}</a>
             </div>
             

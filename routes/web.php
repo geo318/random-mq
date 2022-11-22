@@ -45,7 +45,7 @@ Route::group([
 		Route::prefix('/{movie}')->group(function () {
 			Route::view('/quote/create', 'admin.quotes.create')->name('admin.quote.create');
 			Route::post('/quote', [AdminQuoteController::class, 'store'])->name('admin.quote.store');
-			Route::view('/{quote}/edit', 'admin.quotes.edit')->name('admin.quote.edit');
+			Route::get('/{quote}/edit', [AdminQuoteController::class, 'edit'])->name('admin.quote.edit');
 			Route::patch('/{quote}', [AdminQuoteController::class, 'update'])->name('admin.quote');
 			Route::delete('/{quote}', [AdminQuoteController::class, 'destroy']);
 		});

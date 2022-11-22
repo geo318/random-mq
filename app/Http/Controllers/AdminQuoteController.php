@@ -11,7 +11,7 @@ class AdminQuoteController extends Controller
 	public function store(StoreQuoteRequest $request)
 	{
 		$quote = new Quote();
-        $quote->setTranslations('quote', $request->input('quote'));
+		$quote->setTranslations('quote', $request->input('quote'));
 
 		$quote['user_id'] = auth()->id();
 		$quote['movie_id'] = request('movie');
@@ -35,5 +35,12 @@ class AdminQuoteController extends Controller
 		}
 		$quote->update();
 		return redirect(route('admin.quotes', [app()->getLocale(), Movie::find(request('movie'))->slug]))->with('success', __('Quote updated'));
+	}
+
+	public function edit()
+	{
+		return view('admin.quotes.edit', [
+			'quote' => Quote::find(request('quote')),
+		]);
 	}
 }
