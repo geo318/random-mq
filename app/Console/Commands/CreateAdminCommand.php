@@ -54,6 +54,6 @@ class CreateAdminCommand extends Command
 			'email'    => $email,
 			'password' => bcrypt($password),
 		]);
-		$this->info("Admin Successfully created: name:{$name}, email:{$email}, passwod:{$password}");
+		$this->info("Admin Successfully created: name:{$name}, email:{$email}, password:{$password}");
 	}
 }
