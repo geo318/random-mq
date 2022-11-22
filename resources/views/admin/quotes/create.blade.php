@@ -1,5 +1,5 @@
 <x-admin.quotes.form 
-    button="{{ __('Save') }}" 
-    title="{{ __('Share your favorite quote') }}" 
+    button="{{ __('main.save') }}" 
+    title="{{ __('main.share_your_favorite_quote') }}" 
     :action="route('admin.quote.store',[app()->getLocale(),request('movie')])"
 />

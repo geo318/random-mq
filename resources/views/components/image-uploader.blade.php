@@ -6,7 +6,7 @@
                 <img id='image-exists' class="object-cover w-full h-full" src="{{ asset('storage/' . $thumbnail) }}"/>
                 <label for="file-upload" class="absolute inset-0 cursor-pointer rounded-md bg-transparent text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500">
                     <input id="file-upload" name="thumbnail" type="file" class="sr-only">
-                    <span class="bg-indigo-600 text-white text-sm rounded-xl px-4 py-1 m-1 top-10 table">{{ __('upload again') }}</span>
+                    <span class="bg-indigo-600 text-white text-sm rounded-xl px-4 py-1 m-1 top-10 table">{{ __('main.upload_again') }}</span>
                 </label>
             @endif
         </div>
@@ -17,7 +17,7 @@
                     <label for="file-upload" class="absolute inset-0 cursor-pointer rounded-md bg-transparent text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500">
                         <input id="file-upload" name="thumbnail" type="file" class="sr-only">
                     </label>
-                    <p class="pl-1"><b>{{ __('Upload a file') }}</b> {{ __('or drag and drop') }}</p>
+                    <p class="pl-1"><b>{{ __('main.upload_a_file') }}</b> {{ __('main.or_drag_and_drop') }}</p>
                 </div>
                 <p class="text-xs text-gray-500">PNG, JPG, GIF</p>
                 @error('thumbnail')

@@ -16,8 +16,8 @@
                 @foreach ( array_keys(config('languages')) as $locale )
                     <div class="sm:col-span-6">
                         <div class="mt-1">
-                            <label class="text-gray-800 pb-2 block" for="movie.{{ $locale }}">{{ __('Title') }} ({{ $locale }})</label>
-                            <textarea id="movie.{{ $locale }}" name="title[{{ $locale }}]" rows="2" class="text-black resize-none p-3 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="{{ __('movie title here') }}"
+                            <label class="text-gray-800 pb-2 block" for="movie.{{ $locale }}">{{ __('main.title') }} ({{ $locale }})</label>
+                            <textarea id="movie.{{ $locale }}" name="title[{{ $locale }}]" rows="2" class="text-black resize-none p-3 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="{{ __('main.movie_title_here') }}"
                             >{{ old('title.' . $locale, isset($movie) ? $movie->getTranslations('title')[$locale] : '') }}</textarea>
                         </div>                    
                         @error('title.' . $locale)
