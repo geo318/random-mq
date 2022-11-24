@@ -25,7 +25,7 @@ class AdminMovieController extends Controller
 	public function store(StoreMovieRequest $request)
 	{
 		$movie = new Movie();
-        $movie->setTranslations('title', $request->input('title'));
+		$movie->setTranslations('title', $request->input('title'));
 		$movie['user_id'] = auth()->id();
 		$movie['slug'] = preg_replace('~[^\pL\d]+~u', '-', $movie['title']);
 		$movie->save();

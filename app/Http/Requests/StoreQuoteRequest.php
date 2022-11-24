@@ -12,9 +12,9 @@ class StoreQuoteRequest extends FormRequest
 			'quote.*' => request()->isMethod('post')
 				? 'required|min:2|max:255|unique:quotes,quote'
 				: 'required|min:2|max:255|unique:quotes,quote,' . last($this->segments()),
-			'thumbnail' => request()->isMethod('post') 
-                ? 'image|required' 
-                : 'image',
+			'thumbnail' => request()->isMethod('post')
+				? 'image|required'
+				: 'image',
 		];
 	}
 }
