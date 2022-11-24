@@ -19,6 +19,6 @@ class LoginController extends Controller
 	public function destroy()
 	{
 		auth()->logout();
-		return redirect("/" . app()->getLocale())->with('success', __('Goodbye!'));
+		return redirect('/' . app()->getLocale())->with('success', __('Goodbye!'));
 	}
 }

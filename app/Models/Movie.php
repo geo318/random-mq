@@ -9,6 +9,7 @@ use Spatie\Translatable\HasTranslations;
 class Movie extends Model
 {
 	use HasFactory;
+
 	use HasTranslations;
 
 	public $translatable = ['title'];

@@ -18,7 +18,7 @@ class MovieFactory extends Factory
 	public function definition()
 	{
 		return [
-			'title'    => ["en" => fake()->sentence(4, true),"ka" => fake()->sentence(4, true)],
+			'title'    => ['en' => fake()->sentence(4, true), 'ka' => fake()->sentence(4, true)],
 			'user_id'  => User::factory(),
 			'slug'     => fake()->slug(4, true),
 		];
