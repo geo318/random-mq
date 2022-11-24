@@ -8,7 +8,7 @@
             <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
 
             <a 
-                href="{{ route('admin.quote.create', [app()->getLocale(),$movie->id])  }}"
+                href="{{ route('admin.quote.create', $movie->id)  }}"
                 class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
             >
                 {{ __('main.add_new_quote') }}
@@ -42,10 +42,10 @@
                                             <img id='image-exists' class="object-cover w-16 h-16 rounded-md" src="{{ asset('storage/' . $quote->thumbnail) }}"/>
                                         </td>
                                         <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                            <a href="{{ route('admin.quote.edit', [app()->getLocale(), $movie->id, $quote->id]) }}" class="text-indigo-600 hover:text-indigo-900">{{ __('main.edit') }}</a>
+                                            <a href="{{ route('admin.quote.edit', [$movie->id, $quote->id]) }}" class="text-indigo-600 hover:text-indigo-900">{{ __('main.edit') }}</a>
                                         </td>
                                         <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                            <form action="{{ route('admin.quote',[app()->getLocale(), $movie->id, $quote->id]) }}" method="POST">
+                                            <form action="{{ route('admin.quote',[$movie->id, $quote->id]) }}" method="POST">
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit" class="text-indigo-600 hover:text-indigo-900">{{ __('main.delete') }}</button>

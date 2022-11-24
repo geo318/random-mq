@@ -18,10 +18,17 @@ class SetLanguage
 	 */
 	public function handle(Request $request, Closure $next)
 	{
-		if (Session()->has('applocale') and array_key_exists(Session()->get('applocale'), config('languages')))
+		if (array_key_exists(request()->segment(1), config('languages')))
 		{
-			App::setLocale(Session()->get('applocale'));
+			App::setLocale($locale = request()->segment(1));
 		}
+		elseif (Session()->has('applocale') and array_key_exists(Session()->get('applocale'), config('languages')))
+		{
+			App::setLocale($locale = Session()->get('applocale'));
+		}
+
+		Session()->put('applocale', $locale ?? config('app.locale'));
+
 		return $next($request);
 	}
 }
