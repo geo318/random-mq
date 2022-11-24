@@ -15,7 +15,7 @@ class AdminMovieController extends Controller
 		]);
 	}
 
-	public function show($arg, Movie $movie)
+	public function show(Movie $movie)
 	{
 		return view('admin.quotes.index', [
 			'movie' => $movie,
@@ -29,28 +29,28 @@ class AdminMovieController extends Controller
 		$movie['user_id'] = auth()->id();
 		$movie['slug'] = preg_replace('~[^\pL\d]+~u', '-', $movie['title']);
 		$movie->save();
-		return redirect(route('admin.movies', app()->getLocale()));
+		return redirect(route('admin.movies'));
 	}
 
-	public function edit($arg, Movie $movie)
+	public function edit(Movie $movie)
 	{
 		return view('admin.movies.edit', [
 			'movie' => $movie,
 		]);
 	}
 
-	public function update($arg, StoreMovieRequest $request, Movie $movie)
+	public function update(StoreMovieRequest $request, Movie $movie)
 	{
 		$movie->setTranslations('title', $request->input('title'));
 		$movie['user_id'] = auth()->id();
 		$movie['slug'] = preg_replace('~[^\pL\d]+~u', '-', $movie['title']);
 		$movie->update();
-		return redirect(route('admin.movies', app()->getLocale()))->with('success', __('Movie title updated'));
+		return redirect(route('admin.movies'))->with('success', __('main.movie_title_updated'));
 	}
 
-	public function destroy($arg, Movie $movie)
+	public function destroy(Movie $movie)
 	{
 		$movie->delete();
-		return back()->with('success', __('Movie deleted'));
+		return back()->with('success', __('main.movie_deleted'));
 	}
 }

@@ -5,7 +5,7 @@
                 <img class="w-full" src="{{ $quote->thumbnail ? asset('storage/' . $quote->thumbnail) : 'https://picsum.photos/700/386' }}" alt="">
             </div>
             <x-title class="mt-[4.063rem] mb-[7.125rem]">{{ $quote->quote }}</x-title>
-            <a href="{{ route('quotes', [app()->currentLocale(), $movie->slug])  }}">
+            <a href="{{ route('quotes', $movie->slug)  }}">
                 <x-title class="underline">{{ $movie->title }}</x-title>
             </a>
         @else

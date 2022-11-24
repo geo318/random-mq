@@ -19,7 +19,7 @@
                                 <label for="quote.{{ $locale }}" class="block text-sm font-medium text-gray-700">{{ __('main.quote') }} ({{ $locale }})</label>
                                 <div class="mt-1">
                                     <textarea id="quote.{{ $locale }}" name="quote[{{ $locale }}]" rows="3" class="text-black block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                    >{{ old('quote.' . $locale, $quote?->getTranslations('quote')[$locale] ?? '') }}</textarea>
+                                    >{{ old('quote.' . $locale, isset($quote)? $quote->getTranslations('quote')[$locale] : '') }}</textarea>
                                 </div>
                                 @error('quote.' . $locale)
                                     <p class="mt-2 text-sm text-red-500">{{ $message }}</p>
@@ -30,7 +30,7 @@
                 
                         <div class="sm:col-span-6">
                             <label for="cover-photo" class="block text-sm font-medium text-gray-700">{{ __('main.quote_photo') }}</label>
-                            <x-image-uploader thumbnail="{{ $quote->thumbnail ?? '' }}"/>
+                            <x-image-uploader thumbnail="{{ isset($quote) ? $quote->thumbnail : '' }}"/>
                         </div>
                     </div>
                 </div>

@@ -17,16 +17,16 @@ class AdminQuoteController extends Controller
 		$quote['movie_id'] = request('movie');
 		$quote['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
 		$quote->save();
-		return redirect(route('admin.quotes', [app()->getLocale(), Movie::find(request('movie'))->slug]))->with('success', __('New quote added!'));
+		return redirect(route('admin.quotes', [Movie::find(request('movie'))->slug]))->with('success', __('main.new_quote_added'));
 	}
 
-	public function destroy($arg, $movie, Quote $quote)
+	public function destroy($movie, Quote $quote)
 	{
 		$quote->delete();
-		return back()->with('success', __('Quote deleted'));
+		return back()->with('success', __('main.quote_deleted'));
 	}
 
-	public function update($arg, StoreQuoteRequest $request, $movie, Quote $quote)
+	public function update(StoreQuoteRequest $request, $movie, Quote $quote)
 	{
 		$quote->setTranslations('quote', $request->input('quote'));
 		if (isset($request['thumbnail']))
@@ -34,7 +34,7 @@ class AdminQuoteController extends Controller
 			$quote['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
 		}
 		$quote->update();
-		return redirect(route('admin.quotes', [app()->getLocale(), Movie::find(request('movie'))->slug]))->with('success', __('Quote updated'));
+		return redirect(route('admin.quotes', [Movie::find(request('movie'))->slug]))->with('success', __('main.quote_updated'));
 	}
 
 	public function edit()
