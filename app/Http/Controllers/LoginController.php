@@ -12,7 +12,7 @@ class LoginController extends Controller
 		{
 			return redirect(route('admin.movies'))->with('success', __('main.logged_in_as_admin'));
 		}
-		return back()->with('fail', 'main.try_again');
+		return back()->with('fail', __('main.try_again'));
 	}
 
 	public function destroy()
